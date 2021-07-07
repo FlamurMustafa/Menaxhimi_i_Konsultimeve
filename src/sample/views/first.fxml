@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" stylesheets="@../app.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="sample.controllers.FirstController" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" stylesheets="@../app.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-3.0" layoutY="-3.0" prefHeight="456.0" prefWidth="288.0">
          <children>
@@ -23,12 +23,12 @@
          <children>
             <Label layoutX="35.0" layoutY="78.0" style="-fx-font-size: 20; -fx-text-fill: 'F0E2E7';" text="Menaxhimi i Konsultimeve" />
             <Label layoutX="128.0" layoutY="228.0" style="-fx-font-size: 17; -fx-text-fill: 'F0E2E7';" text="Vazhdo si:" />
-            <Button alignment="CENTER" layoutX="71.0" layoutY="292.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: '1B62C5'; -fx-text-fill: 'F0E2E7';" text="Student">
+            <Button alignment="CENTER" layoutX="71.0" layoutY="292.0" mnemonicParsing="false" onAction="#onStudentClick" prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: '1B62C5'; -fx-text-fill: 'F0E2E7';" text="Student">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="CENTER" layoutX="253.0" layoutY="292.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: '1B62C5'; -fx-text-fill: 'F0E2E7';" text="Profesor">
+            <Button alignment="CENTER" layoutX="253.0" layoutY="292.0" mnemonicParsing="false" onAction="#onProffesorClick" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: '1B62C5'; -fx-text-fill: 'F0E2E7';" text="Profesor">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
