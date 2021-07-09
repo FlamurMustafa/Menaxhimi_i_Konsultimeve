@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import sample.repositories.DatabaseConnection;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,6 +26,8 @@ public class loginController {
     @FXML
     private Label loginMessage;
 
+    @FXML
+    private Button cancelBtn;
     @FXML
     private TextField usernameField;
 
@@ -64,9 +67,12 @@ public class loginController {
             loginMessage.setText("Please enter username and password");
         }
         }
-        public void cancelButton(ActionEvent e){
-        Stage stage = (Stage) Loginbtn.getScene().getWindow();
-        stage.close();
+        public void cancelButton(javafx.event.ActionEvent e) throws Exception {
+            Parent parent = FXMLLoader.load(getClass().getResource("../views/first.fxml"));
+            Scene scene = new Scene(parent);
+            Stage primaryStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            primaryStage.setScene(scene);
+            primaryStage.show();
         }
 
 

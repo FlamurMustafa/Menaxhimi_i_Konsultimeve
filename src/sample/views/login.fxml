@@ -5,7 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -40,14 +43,36 @@
             </PasswordField>
          </children>
         </HBox>
-        <Button fx:id="Loginbtn" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: #2196f3; -fx-background-radius: 5;" text="Sign In">
-            <VBox.margin>
-                <Insets left="30.0" right="30.0" top="20.0" />
-            </VBox.margin>
-            <font>
-                <Font size="17.0" />
-            </font>
-        </Button>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Button fx:id="Loginbtn" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: #2196f3; -fx-background-radius: 5;" text="Sign In" GridPane.columnIndex="1">
+                  <font>
+                      <Font size="17.0" />
+                  </font>
+               <GridPane.margin>
+                  <Insets left="20.0" right="30.0" />
+               </GridPane.margin>
+              </Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: #2196f3; -fx-background-radius: 5;" text="Cancel">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" right="20.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </GridPane>
         <Label fx:id="loginMessage" prefHeight="18.0" prefWidth="558.0" textFill="WHITE">
             <VBox.margin>
                 <Insets left="80.0" right="80.0" top="20.0" />

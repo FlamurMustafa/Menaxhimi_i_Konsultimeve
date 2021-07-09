@@ -3,9 +3,9 @@ CREATE DATABASE db;
 USE db;
 
 CREATE TABLE users(
-id int unsinged not null auto_increment,
-username varchar(30) not null,
-password varchar(30) not null,
+id int not null,
+username varchar(100) not null,
+password varchar(100) not null,
 primary key(id)
 );
 
