@@ -12,8 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.repositories.DatabaseConnection;
 
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -48,7 +46,7 @@ public class loginController {
 
                 while(queryResult.next()){
                     if (queryResult.getInt(1) == 1) {
-                        Parent parent = FXMLLoader.load(getClass().getResource("../views/studentform.fxml"));
+                        Parent parent = FXMLLoader.load(getClass().getResource("../views/student.fxml"));
                         Scene scene = new Scene(parent);
                         Stage primaryStage = new Stage();
                         primaryStage = (Stage) ((Node) e.getSource()).getScene().getWindow();

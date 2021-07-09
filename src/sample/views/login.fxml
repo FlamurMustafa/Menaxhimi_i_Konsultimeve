@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.loginController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #940707;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.loginController">
     <children>
-        <Label alignment="CENTER" contentDisplay="RIGHT" text="Login" textFill="#2196f3">
+        <Label alignment="CENTER" contentDisplay="RIGHT" text="Login" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
@@ -52,7 +52,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-              <Button fx:id="Loginbtn" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: #2196f3; -fx-background-radius: 5;" text="Sign In" GridPane.columnIndex="1">
+              <Button fx:id="Loginbtn" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="Sign In" GridPane.columnIndex="1">
                   <font>
                       <Font size="17.0" />
                   </font>
@@ -60,7 +60,7 @@
                   <Insets left="20.0" right="30.0" />
                </GridPane.margin>
               </Button>
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: #2196f3; -fx-background-radius: 5;" text="Cancel">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelButton" prefHeight="38.0" prefWidth="566.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="Cancel">
                <font>
                   <Font size="17.0" />
                </font>

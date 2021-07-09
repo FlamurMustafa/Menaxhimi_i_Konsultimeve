@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.studentController">
+   <children>
+      <Pane layoutX="-10.0" layoutY="-7.0" prefHeight="408.0" prefWidth="221.0" style="-fx-background-color: #940707;">
+         <children>
+            <Label layoutX="14.0" layoutY="97.0" prefHeight="107.0" prefWidth="202.0" text="Menaxhimi i Konsultimeve" textFill="#fffafa" wrapText="true">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="204.0" prefHeight="71.0" prefWidth="164.0" text="Fakulteti i inxhinierise elektike dhe kompjuterike" textFill="WHITE" wrapText="true" />
+         </children>
+      </Pane>
+      <GridPane layoutX="244.0" layoutY="49.0" prefHeight="296.0" prefWidth="263.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.199951171875" minWidth="10.0" prefWidth="84.6" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.79999999999998" minWidth="40.0" prefWidth="83.00000000000001" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.599999999999994" minWidth="17.600012207031256" prefWidth="19.200036621093744" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.39996337890628" minWidth="40.0" prefWidth="78.39996337890628" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="110.60001220703126" minHeight="3.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="103.19998016357422" minHeight="3.0" prefHeight="59.20000000000001" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.6" minHeight="3.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="93.20000610351565" minHeight="3.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.00001220703126" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.00001220703126" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Emri" />
+            <Label text="Data dhe koha" GridPane.rowIndex="3" />
+            <Label text="Lenda" GridPane.rowIndex="1" />
+            <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+            <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="186.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Label text="Profesori" GridPane.rowIndex="2" />
+            <Button fx:id="SubmitBtn" mnemonicParsing="false" onAction="#submitButton" text="Dergo" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Button fx:id="CancelBtn" mnemonicParsing="false" onAction="#cancelButton" text="Anulo" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <ComboBox fx:id="Lendet" prefHeight="26.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="Profesoret" prefHeight="26.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <Label text="Ora" GridPane.rowIndex="4" />
+            <TextField fx:id="hrField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="minField" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
