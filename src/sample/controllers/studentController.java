@@ -11,8 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import sample.repositories.DatabaseConnection;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -105,13 +108,16 @@ public class studentController implements Initializable {
         minField.setText("");
     }
     @FXML
-    private void submitButton(javafx.event.ActionEvent event){
+    private void submitButton(javafx.event.ActionEvent event) throws Exception{
         String emri = nameField.getText();
         String hr = hrField.getText();
         String min = minField.getText();
         String newDate = datePicker.getValue().toString() + " " + hr + ":" + min + ":00";
-        String profesori = Profesoret.getItems().toString();
-        String lenda = Lendet.getItems().toString();
+        String profesori = Profesoret.getSelectionModel().getSelectedItem().toString();
+        String lenda = Lendet.getSelectionModel().getSelectedItem().toString();
+
+        DatabaseConnection connect = new DatabaseConnection();
+        Connection connDB = connect.getConn();
 
 
         if(emri.isEmpty() || newDate.isEmpty() || profesori.isEmpty() || lenda.isEmpty()){
@@ -122,12 +128,30 @@ public class studentController implements Initializable {
             return;
         }
 
-        String sql = "INSERT INTO konsultimet VALUES (" +
-                "'" + emri + "'," +
-                "'" + newDate + "'," +
-                "'" + profesori + "'," +
-                "'" + lenda + "'," + ")";
 
+
+        String sql = "INSERT INTO konsultimet VALUES (?, ?, ?, ?);";
+        PreparedStatement statement = connDB.prepareStatement(sql);
+        statement.setString(1, profesori);
+        statement.setString(2, emri);
+        statement.setString(3, lenda);
+        statement.setString(4, newDate);
+
+        try {
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows != 1) throw new Exception("ERR_MULTIPLE_ROWS_AFFECTED");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("SUCCESS!");
+            alert.setContentText("Appointment added!");
+            alert.showAndWait();
+        } catch (Exception ex){
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("FAILED!");
+            alert.setContentText("Failed to add appointment!");
+            alert.showAndWait();
+        }
         clear();
     }
 

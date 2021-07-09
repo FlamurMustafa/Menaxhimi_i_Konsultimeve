@@ -8,7 +8,7 @@ public class DatabaseConnection {
     public Connection dbLink;
 
     public Connection getConn(){
-        String dbName = "db";
+        String dbName = "konsultimet_test";
         String dbuser = "root";
         String dbpass = "1111";
 
