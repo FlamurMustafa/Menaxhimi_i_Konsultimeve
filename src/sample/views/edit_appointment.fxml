@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="482.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditAppointmentController">
+    <children>
+        <VBox prefHeight="494.0" prefWidth="13.0" style="-fx-background-color: #a33131;" />
+        <Label layoutX="102.0" layoutY="28.0" text="Reschedule appointment">
+            <font>
+                <Font name="System Bold" size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="89.0" layoutY="84.0" text="Select new date for your appointment" />
+        <DatePicker fx:id="editDatePicker" layoutX="89.0" layoutY="111.0" prefHeight="26.0" prefWidth="287.0" />
+        <Label layoutX="89.0" layoutY="159.0" text="Select new time for your appointment" />
+        <Pane layoutX="89.0" layoutY="194.0" prefHeight="79.0" prefWidth="128.0" style="-fx-background-color: #e0e0e0;">
+            <children>
+                <Label layoutX="51.0" layoutY="1.0" text="HR" textFill="#828181">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="hrField" alignment="CENTER" layoutX="11.0" layoutY="33.0" prefHeight="38.0" prefWidth="106.0" stylesheets="@../style.css" text="00">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="numbers-input" />
+                        <String fx:value="numbers" />
+                    </styleClass>
+                </TextField>
+            </children>
+        </Pane>
+        <Pane layoutX="248.0" layoutY="194.0" prefHeight="79.0" prefWidth="128.0" style="-fx-background-color: #e0e0e0;">
+            <children>
+                <Label layoutX="45.0" layoutY="1.0" text="MIN" textFill="#828181">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="minField" alignment="CENTER" layoutX="11.0" layoutY="33.0" prefHeight="38.0" prefWidth="106.0" stylesheets="@../style.css" text="00">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="numbers-input" />
+                        <String fx:value="numbers" />
+                    </styleClass>
+                </TextField>
+            </children>
+        </Pane>
+        <Label layoutX="89.0" layoutY="294.0" text="Enter the reason for this rescheduling" />
+        <TextArea layoutX="89.0" layoutY="318.0" prefHeight="114.0" prefWidth="287.0" />
+        <Button fx:id="btnFinishEditing" layoutX="290.0" layoutY="447.0" mnemonicParsing="false" onAction="#onFinishEditingClick" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #a33131;" stylesheets="@../style.css" text="Finish" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <styleClass>
+                <String fx:value="update-button" />
+                <String fx:value="update" />
+            </styleClass>
+        </Button>
+    </children>
+</AnchorPane>
