@@ -33,8 +33,11 @@ public class FirstController implements Initializable {
     }
     @FXML
     void onProffesorClick(ActionEvent e) throws Exception{
-        System.out.println("Clicked proffesor button");
-
+        Parent parent = FXMLLoader.load(getClass().getResource("../views/ProfLog.fxml"));
+        Scene scene = new Scene(parent);
+        Stage primaryStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 
