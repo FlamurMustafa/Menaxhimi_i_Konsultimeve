@@ -20,9 +20,9 @@ public class FirstController implements Initializable {
 
     @FXML
     void onStudentClick(ActionEvent e) throws Exception{
-        System.out.println("Clicked student button");
-
-
+        Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
+        Scene scene = new Scene(root);
+        
     }
     @FXML
     void onProffesorClick(ActionEvent e) throws Exception{
