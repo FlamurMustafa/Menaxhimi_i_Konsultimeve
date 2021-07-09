@@ -10,6 +10,7 @@ import javafx.stage.*;
 
 
 import java.net.URL;
+import java.util.EventObject;
 import java.util.ResourceBundle;
 
 public class FirstController implements Initializable {
@@ -20,8 +21,14 @@ public class FirstController implements Initializable {
 
     @FXML
     void onStudentClick(ActionEvent e) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
-        Scene scene = new Scene(root);
+        Parent parent = FXMLLoader.load(getClass().getResource("../views/login.fxml"));
+        Scene scene = new Scene(parent);
+        Stage primaryStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+
+
         
     }
     @FXML

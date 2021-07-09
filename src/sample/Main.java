@@ -8,6 +8,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Main extends Application {
     @Override
@@ -16,6 +18,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Menaxhimi i Konsultimeve");
         primaryStage.setScene(scene);
+        primaryStage.resizableProperty().setValue(false);
         primaryStage.show();
 
     }
