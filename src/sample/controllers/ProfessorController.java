@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,6 +24,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -301,6 +303,21 @@ public class ProfessorController implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.show();
+    }
+
+    @FXML
+    public void onExitButtonClick(ActionEvent e) throws Exception{
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("You will log out now!");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            Stage primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("../views/first.fxml"));
+            Scene scene = new Scene(parent);
+            primaryStage.setScene(scene);
+        } else return;
     }
 
     @FXML

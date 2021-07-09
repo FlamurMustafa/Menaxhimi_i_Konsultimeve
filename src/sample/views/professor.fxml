@@ -47,25 +47,6 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button contentDisplay="TOP" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="228.0" stylesheets="@../style.css" text="Faqja baze">
-                    <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Home_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="30.0" />
-                    </VBox.margin>
-                    <styleClass>
-                        <String fx:value="menu-buttons" />
-                        <String fx:value="selected" />
-                    </styleClass>
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
                 <Button fx:id="btnCalendar" contentDisplay="TOP" graphicTextGap="5.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="26.0" prefWidth="228.0" stylesheets="@../style.css" text="Kalendari">
                     <graphic>
                         <ImageView fitHeight="70.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
