@@ -84,6 +84,8 @@ public class EditAppointmentController implements Initializable {
             ex.printStackTrace();
         }
 
+        hrField.setTextFormatter(new TextFormatter<Object>(hrFilter));
+        minField.setTextFormatter(new TextFormatter<Object>(minFilter));
     }
 
     public void oldAppointment(Konsultimet k){
