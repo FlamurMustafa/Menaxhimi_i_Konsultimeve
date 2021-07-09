@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.controllers.CancelAppointmentController;
 import sample.Konsultimet;
 import sample.Professor;
 
@@ -23,6 +24,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProfessorController implements Initializable {
 
@@ -204,6 +207,23 @@ public class ProfessorController implements Initializable {
         String phone = profPhoneField.getText();
         String website = profWebsiteField.getText();
 
+        if(!validateUsername(username)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Username must:\n  - start with a letter\n  - end with a letter\n  - contain only letters, numbers and '.', '_' or '-'\n  - cannot contain two symbols close to each other");
+            alert.setHeaderText("Wrong username format");
+            alert.showAndWait();
+            renderProfessor(getProfessor());
+            return;
+
+        } else if(!phone.matches("\\d{9}")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Phone number must have 9 digits!");
+            alert.setHeaderText("Wrong username format");
+            alert.showAndWait();
+            renderProfessor(getProfessor());
+            return;
+        }
+
         String sql = "UPDATE profesoret SET username = ?, phone = ?, website = ?  WHERE id = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, username);
@@ -252,12 +272,36 @@ public class ProfessorController implements Initializable {
 
         Scene scene = new Scene(parent);
         Stage primaryStage = new Stage();
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Edit Appointment");
         primaryStage.setScene(scene);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.show();
     }
 
+
+    @FXML
+    public void onCancelButtonClick(ActionEvent e) throws Exception{
+        Konsultimet selected = otherDaysTableView.getSelectionModel().getSelectedItem();
+        if(selected == null) return;
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("cancel_appointment.fxml"));
+
+        Parent parent = loader.load();
+
+        CancelAppointmentController controller = loader.getController();
+
+        controller.oldAppointment(selected);
+
+        Scene scene = new Scene(parent);
+        Stage primaryStage = new Stage();
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("Cancel Appointment");
+        primaryStage.setScene(scene);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.show();
+    }
 
     @FXML
     public void onRefreshButtonClick(ActionEvent e) throws Exception{
@@ -299,5 +343,19 @@ public class ProfessorController implements Initializable {
 
         ObservableList<Konsultimet> items = FXCollections.observableArrayList(getKonsultimet(false));
         otherDaysTableView.setItems(items);
+    }
+
+    public boolean validateUsername(String username){
+        String regEx = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
+
+        Pattern p = Pattern.compile(regEx);
+
+        if(username == null){
+            return false;
+        }
+
+        Matcher m = p.matcher(username);
+
+        return m.matches();
     }
 }

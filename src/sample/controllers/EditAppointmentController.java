@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 import sample.Konsultimet;
 
@@ -19,10 +20,52 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 public class EditAppointmentController implements Initializable {
     Connection conn;
     Konsultimet konsult = new Konsultimet();
+
+    UnaryOperator<TextFormatter.Change> minFilter = change -> {
+        String text = change.getText();
+
+        if (change.isDeleted()) {
+            return change;
+        }
+
+        if (text.matches("[0-9]+")) {
+            String newText = change.getControlNewText();
+            Integer newMin = Integer.parseInt(newText);
+
+            if(newText.length() <= 2 && newMin >= 0 && newMin <= 59) {
+                return change;
+            }
+        };
+
+        return null;
+    };
+
+    UnaryOperator<TextFormatter.Change> hrFilter = change -> {
+        String text = change.getText();
+
+        if (change.isDeleted()) {
+            return change;
+        }
+
+        if (text.matches("[0-9]+")) {
+            String newText = change.getControlNewText();
+            Integer newHr = Integer.parseInt(newText);
+
+            if(newText.length() <= 2 && newHr >= 0 && newHr <= 23) {
+                return change;
+            }
+        };
+
+
+
+        return null;
+    };
+
 
     @FXML
     private DatePicker editDatePicker;
@@ -55,6 +98,22 @@ public class EditAppointmentController implements Initializable {
         String hr = hrField.getText();
         String min = minField.getText();
 
+        if (hr.length() == 1){
+            hr = "0" + hr;
+        }
+
+        if (min.length() == 1){
+            min = "0" + min;
+        }
+
+        if(!validateHr(hr) || min.length() == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Possible time is [08:00 - 18:59] ");
+            alert.showAndWait();
+            return;
+        }
+
+
         if(editDatePicker.getValue() != null && !hr.isEmpty() && !hr.isBlank() && !min.isEmpty() && !min.isBlank()) {
             String newDate = editDatePicker.getValue().toString() + " " + hr + ":" + min + ":00";
 
@@ -76,6 +135,21 @@ public class EditAppointmentController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    private boolean validateHr(String hr){
+
+        if(hr.length() == 0){
+            return false;
+        }
+
+        Integer intHr = Integer.parseInt(hr);
+
+        if (intHr < 8 || intHr > 18){
+            return false;
+        }
+
+        return true;
     }
 
 
