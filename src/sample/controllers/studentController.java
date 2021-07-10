@@ -85,7 +85,7 @@ public class studentController implements Initializable {
     private TextField minField;
 
     ObservableList<String> profesori  = FXCollections.observableArrayList("Isak Shabani", "Blerim Rexha", "Valon Raca");
-    ObservableList<String> lenda  = FXCollections.observableArrayList("KNK", "Rrjeta kompjuterike", "AK");
+    ObservableList<String> lenda  = FXCollections.observableArrayList("Komunikimi Njeri-Kompjuter", "Rrjeta kompjuterike", "Arkitektura e Kompjutereve");
 
 
     @Override

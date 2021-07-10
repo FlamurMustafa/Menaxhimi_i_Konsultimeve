@@ -10,7 +10,7 @@ public class DatabaseConnection {
     public Connection getConn(){
         String dbName = "konsultimet_test";
         String dbuser = "root";
-        String dbpass = "1111";
+        String dbpass = "1234";
 
         String url = "jdbc:mysql://localhost/" + dbName;
 

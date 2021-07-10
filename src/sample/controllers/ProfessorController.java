@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.SessionManager;
 import sample.controllers.CancelAppointmentController;
 import sample.Konsultimet;
 import sample.Professor;
@@ -33,7 +34,7 @@ public class ProfessorController implements Initializable {
 
 
     Connection conn;
-
+    private String professorName = SessionManager.professor.getName();
 
     @FXML
     private TableView<Konsultimet> todayTableView;
@@ -147,7 +148,7 @@ public class ProfessorController implements Initializable {
         ArrayList<Konsultimet> konsultimet = new ArrayList<>();
 
         if (thisDay) {
-            String sql = "SELECT * FROM konsultimet WHERE profesori = 'Blerim Rexha' and koha_fillimi like '" + strToday + "%';";
+            String sql = "SELECT * FROM konsultimet WHERE profesori = '" + professorName + "' and koha_fillimi like '" + strToday + "%';";
             Statement statement = conn.createStatement();
 
             ResultSet resultSet = statement.executeQuery(sql);
@@ -165,7 +166,7 @@ public class ProfessorController implements Initializable {
             return konsultimet;
 
         } else {
-            String sql = "select * from konsultimet where profesori = 'Blerim Rexha' and DATE(koha_fillimi) > CURDATE();";
+            String sql = "select * from konsultimet where profesori = '" + professorName + "' and DATE(koha_fillimi) > CURDATE();";
             Statement statement = conn.createStatement();
 
             ResultSet resultSet = statement.executeQuery(sql);
@@ -288,7 +289,7 @@ public class ProfessorController implements Initializable {
         if(selected == null) return;
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("cancel_appointment.fxml"));
+        loader.setLocation(getClass().getResource("../views/cancel_appointment.fxml"));
 
         Parent parent = loader.load();
 
@@ -313,6 +314,7 @@ public class ProfessorController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK){
+            SessionManager.professor = null;
             Stage primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
             Parent parent = FXMLLoader.load(getClass().getResource("../views/first.fxml"));
             Scene scene = new Scene(parent);
@@ -327,7 +329,7 @@ public class ProfessorController implements Initializable {
 
 
     private Professor getProfessor() throws Exception{
-        String sql = "SELECT * from Profesoret where name = 'Blerim Rexha'";
+        String sql = "SELECT * from Profesoret where name = '" + professorName + "';";
         Statement statement = conn.createStatement();
 
         ResultSet resultSet = statement.executeQuery(sql);

@@ -66,7 +66,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button contentDisplay="TOP" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="228.0" stylesheets="@../style.css" text="Dil">
+                <Button contentDisplay="TOP" graphicTextGap="5.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="26.0" prefWidth="228.0" stylesheets="@../style.css" text="Dil">
                     <graphic>
                         <ImageView fitHeight="70.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -285,7 +285,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="btnCancelAppointment" disable="true" layoutX="274.0" layoutY="541.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" stylesheets="@../style.css" text="Anulo" textFill="WHITE">
+                        <Button fx:id="btnCancelAppointment" disable="true" layoutX="274.0" layoutY="541.0" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="35.0" prefWidth="98.0" stylesheets="@../style.css" text="Anulo" textFill="WHITE">
                             <styleClass>
                                 <String fx:value="update-button" />
                                 <String fx:value="update" />
